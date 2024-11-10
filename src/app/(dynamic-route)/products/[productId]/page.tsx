@@ -1,20 +1,25 @@
 import type { FC } from 'react'
+import type { GMFn, PageProps } from './type'
 
-// 定义 ProductDetail 组件的 Props 的 TS 类型
-type ProductDetailProps = {
-  params: Promise<{
-    productId: string // 定义 params 中的变量的类型，productId 对应动态路由文件名
-  }>
+// 使用 generateMetadata() 函数根据动态路由参数获取元数据
+export const generateMetadata: GMFn = async ({ params }) => {
+  // 需要异步获取 params props 中的值
+  const productId = (await params).productId
+
+  // 返回根据动态值生成的 metadata 对象
+  return {
+    title: `Product ${productId}`,
+  }
 }
 
-// ---------------------- ProductDetail 组件 ------------------------------
+// ---------------------- ProductDetail 页面组件 ------------------------------
 // params 是一个对象，用于接收动态路由中的参数
-const ProductDetail: FC<ProductDetailProps> = async ({ params }) => {
+const ProductDetail: FC<PageProps> = async ({ params }) => {
   // 需要异步获取 params props 中的值
   const productId = (await params).productId
 
   return (
-    <div className="text-2xl font-bold">Details for Product {productId}</div>
+    <div className="text-2xl font-400">Details for Product {productId}</div>
   )
 }
 

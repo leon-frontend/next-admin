@@ -1,3 +1,7 @@
-export default function Home() {
+import type { FC } from 'react'
+
+const Home: FC = () => {
   return <div>Welcome Home!</div>
 }
+
+export default Home
