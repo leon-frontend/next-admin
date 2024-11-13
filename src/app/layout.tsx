@@ -27,7 +27,7 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
         >
           <p>Header</p>
         </header>
-        {children}
+        <div className="my-6">{children}</div>
         <footer
           style={{
             backgroundColor: 'red',
